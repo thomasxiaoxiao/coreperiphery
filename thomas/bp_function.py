@@ -1,3 +1,4 @@
+#By: Thomas
 #the O(N^2) version of the bp_algorithm
 #implemented with degree guessing
 from __future__ import division

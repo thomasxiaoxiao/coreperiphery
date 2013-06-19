@@ -1,3 +1,4 @@
+#By: Thomas
 #the O(N+M) version of the bp_algorithm for non-degree corrected block model.
 #implemented with parameter updates
 from __future__ import division
