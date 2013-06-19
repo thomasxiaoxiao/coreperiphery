@@ -6,8 +6,7 @@ import random as rd
 
 def prob(adj, omega):
     return omega if adj == 0 else 1 - omega
-    #(omega**adj)*np.exp(-omega)
-
+    #return (omega**adj)*np.exp(-omega)
 
 def BP_infer(N,q,gamma,omega,A,tmax):
     error = 10
@@ -37,7 +36,6 @@ def BP_infer(N,q,gamma,omega,A,tmax):
                             if w!=u and w!=v:
                                 SIGMA = 0
                                 for s in range(q):
-                                    #SIGMA += cav[w][u][s]*(omega[r][s]**A.item(w,u))*np.exp(-omega[r][s])
                                     SIGMA += cav[w][u][s]*prob(A.item(w,u),omega[r][s])
                                 PI += np.log(SIGMA)
                         buff.append(np.exp(np.log(gamma[r]) + PI))
@@ -98,7 +96,7 @@ def BP_infer(N,q,gamma,omega,A,tmax):
                 w = SIGMA/(gamma[r]*gamma[s]*N**2)
                 if w > 1:
                   w = 1
-                assert w <= 1
+                assert 0 <= w <= 1
                 buff.append(w)
             omega[r] =buff
         #print omega
